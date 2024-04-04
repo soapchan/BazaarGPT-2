@@ -88,7 +88,8 @@ class OpenAPI:
 	def output_info(self):
 		"""gets the output json"""
 		try:
-			json_response = self.run_ai().model_dump_json(indent=4)
+			response = self.run_ai()
+			json_response = response.model_dump_json(indent=4)
 			logger.info("Converted API output into JSON")
 		except Exception:
 			logger.error("Failed to convert API output into JSON")

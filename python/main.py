@@ -22,8 +22,6 @@ class Main:
 
 		openapi.get_item_data(item_name=self.item)
 
-		openapi.run_ai()
-		openapi.output_info()
 		openapi.get_message_output()
 		exit()
 
