@@ -45,9 +45,9 @@ instructions = ("You are a helpful assistant designed to review and explain the 
 
 
 class OpenAPI:
-	def __init__(self, model, item, max_tokens):
-		self.model = model
-		self.item = item
+	def __init__(self, max_tokens):
+		self.model = self.choose_model(mainpage.model_entry.get())
+		self.item = self.get_item_data(mainpage.item_entry.get())
 		self.max_tokens = max_tokens
 
 
@@ -77,10 +77,10 @@ class OpenAPI:
 
 	def run_ai(self):
 		response = client.chat.completions.create(
-			model=self.model(model=self.choose_model(mainpage.model_entry.get())),
+			model=self.model,
 			messages=[
 				{"role": "system", "content": f"{instructions}"},
-				{"role": "user", "content": f"The json data is {self.get_item_data(mainpage.item_entry.get())}."}
+				{"role": "user", "content": f"The json data is {self.item}."}
 			],
 			max_tokens=self.max_tokens,
 		)
