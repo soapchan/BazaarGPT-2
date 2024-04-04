@@ -1,7 +1,10 @@
 from openai import OpenAI
 from bazaarAPI import BazaarAPI
 import logging
+from gui import Mainpage
+import json
 
+mainpage = Mainpage()
 bazaar = BazaarAPI()
 client = OpenAI()
 
@@ -75,12 +78,29 @@ class OpenAPI:
 
 	def run_ai(self):
 		response = client.chat.completions.create(
-			model=self.model(model=...),  # will be fixed with the addition of tkinter
+			model=self.model(model=self.choose_model(mainpage.model_entry.get())),
 			messages=[
 				{"role": "system", "content": f"{instructions}"},
-				{"role": "user", "content": f"The json data is {self.get_item_data(...)}."}  # fix later with tkinter
+				{"role": "user", "content": f"The json data is {self.get_item_data(mainpage.item_entry.get())}."}
 			],
 			max_tokens=self.max_tokens,
 		)
 		logger.info("openAI API call complete")
 		return response
+
+
+	def output_info(self):
+		"""gets the output json"""
+		try:
+			json_response = self.run_ai().model_json_schema()
+			logger.info("Converted API output into JSON")
+		except Exception:
+			logger.error("Failed to convert API output into JSON")
+
+		print(json.dumps(json_response, indent=4))
+		return json_response
+
+
+	def get_message_output(self):
+		"""retrieves the message for the client"""
+		pass
