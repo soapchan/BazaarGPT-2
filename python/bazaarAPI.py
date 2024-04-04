@@ -10,6 +10,7 @@ class BazaarAPI:
         self.api_key = os.getenv("HYPIXEL_KEY")
 
     def get_bazaar_data(self):
+        """Gets the bazaar data from the skyblock endpoint"""
         response = requests.get(f"https://api.hypixel.net/skyblock/bazaar?key={self.api_key}")
         if response.status_code == 200:
             return response.json()

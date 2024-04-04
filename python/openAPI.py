@@ -48,9 +48,11 @@ class OpenAPI:
 		self.model = model
 		self.item = item
 		self.max_tokens = max_tokens
+		self.response = None
 
 
 	def choose_model(self, model):
+		"""The model selection"""
 		models = {"3.5": "gpt-3.5-turbo-0125", "4": "gpt-4-0125-preview"}
 		for _ in models:
 			if model == "3.5":
@@ -62,6 +64,7 @@ class OpenAPI:
 
 
 	def get_item_data(self, item_name):
+		"""Singles out the selected item from the rest of the bazaar"""
 		data = bazaar.get_bazaar_data()
 		products = data.get('products', {})
 		item_data = products.get(item_name)
@@ -73,6 +76,7 @@ class OpenAPI:
 
 
 	def run_ai(self):
+		"""The main AI function"""
 		response = client.chat.completions.create(
 			model=self.model,
 			messages=[
@@ -85,17 +89,22 @@ class OpenAPI:
 		return response
 
 
+	def response_runner(self):
+		"""Runs run_ai() to generate an API response.
+			Can be used for custom APIs or anything else"""
+		self.response = self.run_ai()
+
+
 	def output_info(self):
 		"""gets the output json"""
 		try:
-			response = self.run_ai()
-			json_response = response.model_dump_json(indent=4)
+			json_response = self.response.model_dump_json(indent=4)
 			logger.info("Converted API output into JSON")
-		except Exception as e:
+		except Exception:
 			logger.error("Failed to convert API output into JSON")
 
 		print(json_response)
 
-		message = response.choices[0].message.content
+		message = self.response.choices[0].message.content
 
 		print(message)

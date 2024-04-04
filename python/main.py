@@ -18,11 +18,12 @@ class Main:
 
 
 	def main(self):
+		"""The main function"""
 		openapi.choose_model(model=self.model)
 
 		openapi.get_item_data(item_name=self.item)
 
-		openapi.output_info()
+		openapi.response_runner()
 		exit()
 
 
