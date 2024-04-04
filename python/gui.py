@@ -26,4 +26,5 @@ class Mainpage:
 
 	def run_command(self):
 		"""returns True to the Run command"""
+		self.mainpage.quit()
 		return True

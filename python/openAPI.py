@@ -25,12 +25,12 @@ instructions = ("You are a helpful assistant designed to review and explain the 
 				" all conventions listed above."
 				"The template you are required to use for the response is:"
 				"```md"
+				"#{item_name}"
 				"### Sell:"
 				"- Lowest price: {lowest_sell_price} coins | {sell_quantity_lowest} available"
 				"- Highest price: {highest_sell_price} coins | {sell_quantity_highest} available"
 				"- Total volume: {total_sell_volume}"
 				"#### {Short description of sell data (20 words)}"
-
 				"### Buy:"
 				"- Highest price: {highest_buy_price} coins | {buy_quantity_highest} available"
 				"- Lowest price: {lowest_buy_price} coins | {buy_quantity_lowest} available"
@@ -46,9 +46,9 @@ instructions = ("You are a helpful assistant designed to review and explain the 
 
 
 class OpenAPI:
-	def __init__(self, max_tokens, model, item):
-		self.model = model
-		self.item = item
+	def __init__(self, max_tokens):
+		self.model = mainpage.model_entry.get()
+		self.item = mainpage.item_entry.get()
 		self.max_tokens = max_tokens
 
 
@@ -109,4 +109,6 @@ class OpenAPI:
 
 	def get_message_output(self):
 		"""retrieves the message for the client"""
-		pass
+		message = self.output_info().choices[0].message.content
+		print(message)
+		return message
