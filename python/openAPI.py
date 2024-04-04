@@ -74,7 +74,7 @@ class OpenAPI:
 
 	def run_ai(self):
 		response = client.chat.completions.create(
-			model="gpt-3.5-turbo-0125",
+			model=self.model,
 			messages=[
 				{"role": "system", "content": f"{instructions}"},
 				{"role": "user", "content": f"The json data is {self.item}."}
@@ -95,11 +95,7 @@ class OpenAPI:
 			logger.error("Failed to convert API output into JSON")
 
 		print(json_response)
-		return json_response
 
+		message = response.choices[0].message.content
 
-	def get_message_output(self):
-		"""retrieves the message for the client"""
-		message = self.output_info().choices[0].message.content
 		print(message)
-		return message

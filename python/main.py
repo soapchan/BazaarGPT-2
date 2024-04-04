@@ -22,7 +22,7 @@ class Main:
 
 		openapi.get_item_data(item_name=self.item)
 
-		openapi.get_message_output()
+		openapi.output_info()
 		exit()
 
 
