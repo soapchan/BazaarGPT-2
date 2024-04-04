@@ -1,9 +1,7 @@
 from openai import OpenAI
 from bazaarAPI import BazaarAPI
 import logging
-from gui import Mainpage
 
-mainpage = Mainpage()
 bazaar = BazaarAPI()
 client = OpenAI()
 
@@ -46,9 +44,9 @@ instructions = ("You are a helpful assistant designed to review and explain the 
 
 
 class OpenAPI:
-	def __init__(self, max_tokens):
-		self.model = mainpage.model_entry.get()
-		self.item = mainpage.item_entry.get()
+	def __init__(self, max_tokens, model, item):
+		self.model = model
+		self.item = item
 		self.max_tokens = max_tokens
 
 
@@ -61,14 +59,6 @@ class OpenAPI:
 			elif model == "4":
 				logger.info("Model gpt-4-0125-preview selected")
 				return models["4"]
-			else:
-				logger.error(f"Invalid Model ({model}). Please choose either 3.5 or 4")
-				query = input("Would you like to run the gpt-3.5-turbo-0125 as a default? Y/N: ")
-				if query == "y".upper():
-					self.model = "gpt-3.5-turbo-0125"
-				elif query == "N".upper():
-					logger.info("Declined continuation. Stopping program.")
-					exit()
 
 
 	def get_item_data(self, item_name):
