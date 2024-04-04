@@ -2,7 +2,6 @@ from openai import OpenAI
 from bazaarAPI import BazaarAPI
 import logging
 from gui import Mainpage
-import json
 
 mainpage = Mainpage()
 bazaar = BazaarAPI()
@@ -92,12 +91,12 @@ class OpenAPI:
 	def output_info(self):
 		"""gets the output json"""
 		try:
-			json_response = self.run_ai().model_json_schema()
+			json_response = self.run_ai().model_dump_json(indent=4)
 			logger.info("Converted API output into JSON")
 		except Exception:
 			logger.error("Failed to convert API output into JSON")
 
-		print(json.dumps(json_response, indent=4))
+		print(json_response)
 		return json_response
 
 

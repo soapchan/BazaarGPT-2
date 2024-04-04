@@ -11,7 +11,7 @@ class Mainpage:
 		self.model_label = tk.Label(text="Model: ")
 		self.model_entry = tk.Entry()
 
-		self.run_button = tk.Button(text="Run")
+		self.run_button = tk.Button(text="Run", command=self.run_command)
 
 
 	def grid_features(self):
@@ -22,3 +22,8 @@ class Mainpage:
 		self.model_entry.grid(column=2, row=2)
 
 		self.run_button.grid(column=1, row=3)
+
+
+	def run_command(self):
+		"""returns True to the Run command"""
+		return True
