@@ -15,12 +15,3 @@ class BazaarAPI:
             return response.json()
         else:
             raise Exception("Failed to fetch Bazaar data")
-
-    def get_item_data(self, item_name):
-        data = self.get_bazaar_data()
-        products = data.get('products', {})
-        item_data = products.get(item_name)
-        if item_data:
-            return item_data
-        else:
-            raise Exception("Item not found")
