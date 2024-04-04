@@ -3,7 +3,8 @@
 
 ## Introduction
 
-BazaarGPT is a tool that uses AI to help people understand complex bazaar information more easily. It takes all the complicated numbers and makes them simple to understand, especially for beginners.## Table of Contents
+BazaarGPT is a tool that uses AI to help people understand complex bazaar information more easily. It takes all the complicated numbers and makes them simple to understand, especially for beginners.
+## Table of Contents
 
 1. Introduction
 2. Getting Started
