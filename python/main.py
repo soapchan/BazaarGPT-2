@@ -4,7 +4,7 @@ from gui import Mainpage
 import logging
 
 mainpage = Mainpage()
-openapi = OpenAPI(max_tokens=300)
+openapi = OpenAPI(max_tokens=300, model=mainpage.model_entry.get(), item=mainpage.item_entry.get())
 bazaar = BazaarAPI()
 
 
@@ -32,6 +32,7 @@ class Main:
 
 	def main(self):
 		self.run_ai()
+		mainpage.mainpage.mainloop()
 
 
 main = Main()
