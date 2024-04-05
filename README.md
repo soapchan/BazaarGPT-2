@@ -6,12 +6,12 @@
 BazaarGPT is a tool that uses AI to help people understand complex bazaar information more easily. It takes all the complicated numbers and makes them simple to understand, especially for beginners.
 ## Table of Contents
 
-1. Usage
-2. Introduction
+1. Introduction
+2. Features
 3. Getting Started
 4. Installation
 5. Configuration
-6. Features
+6. Usage
 7. Dependencies
 8. Troubleshooting
 9. License
