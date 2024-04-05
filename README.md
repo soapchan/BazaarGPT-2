@@ -6,15 +6,22 @@
 BazaarGPT is a tool that uses AI to help people understand complex bazaar information more easily. It takes all the complicated numbers and makes them simple to understand, especially for beginners.
 ## Table of Contents
 
-1. Introduction
-2. Getting Started
-3. Installation
-4. Configuration
-5. Usage
+1. Usage
+2. Introduction
+3. Getting Started
+4. Installation
+5. Configuration
 6. Features
 7. Dependencies
 8. Troubleshooting
 9. License
+
+## Features
+
+- AI generated descriptions of the item's economy.
+- Real-time data fetching from Hypixel Skyblock Bazaar.
+- Detailed Markdown reports on item trends and statistics.
+- Available API function for further 3rd party expansion.
 
 ## Getting Started
 
@@ -45,15 +52,8 @@ To start using BazaarGPT:
    python main.py
    ```
 2. Follow the on-screen prompts to select a model and item.
- -- the current available models are either 3.5 or 4.
+- the current available models are either `3.5` or `4`. Model `4` is overkill with the current setup.
 3. The tool will fetch data and present a Markdown-formatted analysis of the selected item, aswell as the JSON output.
-
-## Features
-
-- AI generated descriptions of the item's economy.
-- Real-time data fetching from Hypixel Skyblock Bazaar.
-- Detailed Markdown reports on item trends and statistics.
-- Available API function for further 3rd party expansion.
 
 ## Dependencies
 
