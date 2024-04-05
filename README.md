@@ -18,7 +18,7 @@ BazaarGPT is a tool that uses AI to help people understand complex bazaar inform
 
 ## Getting Started
 
-This tool is user-friendly and designed for easy interaction. Whether you are looking to analyze market trends or get detailed information on specific items, this tool has you covered.
+Obtain a Hypixel API key at https://developer.hypixel.net and an OpenAI API key at https://platform.openai.com/api-keys
 
 ## Installation
 
@@ -27,13 +27,14 @@ This tool is user-friendly and designed for easy interaction. Whether you are lo
 
 ## Configuration
 
-1. Obtain an API key from Hypixel.
+1. Retrieve your 2 API keys.
 2. Create a `.env` file in the `python` directory.
-3. Add your Hypixel API and OpenAI API keys to the `.env` file:
+3. Add your Hypixel API and OpenAI API keys to the `.env` file in this format:
    ```
    HYPIXEL_KEY=your_api_key_here
     OPENAI_API_KEY=your_openAI_key_here
    ```
+   Do not share your .env file with ANYONE.
 
 ## Usage
 
