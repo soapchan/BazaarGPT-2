@@ -15,16 +15,20 @@ class Main:
 	def __init__(self):
 		self.model = input("Choose a model: ")
 		self.item = input("Choose an item: ")
+		self.debug_mode = True
 
 
 	def main(self):
 		"""The main function"""
-		self.choose_model()
+		if not self.debug_mode:
+			self.choose_model()
 
-		openapi.get_item_data(item_name=self.item)
+			openapi.get_item_data(item_name=self.item, debug_mode=False)
 
-		openapi.response_runner()
-		openapi.output_info()
+			openapi.response_runner()
+			openapi.output_info()
+		elif self.debug_mode:
+			openapi.get_item_data(item_name=self.item, debug_mode=True)
 
 
 	def choose_model(self):

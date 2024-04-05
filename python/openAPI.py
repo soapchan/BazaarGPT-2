@@ -1,3 +1,5 @@
+import json
+
 from openai import OpenAI
 from bazaarAPI import BazaarAPI
 import logging
@@ -52,16 +54,23 @@ class OpenAPI:
 		self.response = None  # this stores the output json data. Use this when getting data.
 
 
-	def get_item_data(self, item_name):
+	def get_item_data(self, item_name, debug_mode):
 		"""Singles out the selected item from the rest of the bazaar"""
 		data = bazaar.get_bazaar_data()
 		products = data.get('products', {})
 		item_data = products.get(item_name)
 		if item_data:
 			logger.info(f"Item {item_name} data successfully received")
+			if debug_mode:
+				print(json.dumps(item_data, indent=4))
 			return item_data
 		else:
 			raise Exception(f"Item ({item_name}) not found")
+
+
+	def item_debug_output(self):
+		"""Item JSON details for external use"""
+		pass
 
 
 	def run_ai(self):
