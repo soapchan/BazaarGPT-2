@@ -61,16 +61,36 @@ class OpenAPI:
 		item_data = products.get(item_name)
 		if item_data:
 			logger.info(f"Item {item_name} data successfully received")
-			if debug_mode:
-				print(json.dumps(item_data, indent=4))
 			return item_data
 		else:
 			raise Exception(f"Item ({item_name}) not found")
 
 
-	def item_debug_output(self):
-		"""Item JSON details for external use"""
-		pass
+	def retrieve_key_data(self):
+		"""Pulls the key data out of get_item_data()"""
+		item_data = self.get_item_data(item_name=self.item, debug_mode=True)
+		parsed_data = json.dumps(item_data, indent=4)
+		data = json.loads(parsed_data)
+
+		def get_lowest_sell():
+			sell_summary = data["sell_summary"]
+			sell_product_list = []
+			for product in sell_summary:
+				sell_product_list.append(product["pricePerUnit"])
+			min_price_sell = min(sell_product_list)
+			return min_price_sell
+
+		def get_highest_buy():
+			buy_summary = data["buy_summary"]
+			buy_product_list = []
+			for product in buy_summary:
+				buy_product_list.append(product["pricePerUnit"])
+			max_price_buy = max(buy_product_list)
+			return max_price_buy
+
+		def get_quick_status():
+			quick_status = data["quick_status"]
+			return quick_status
 
 
 	def run_ai(self):
@@ -88,7 +108,7 @@ class OpenAPI:
 
 
 	def response_runner(self):
-		"""Indents the output JSON."""
+		"""Gets the full JSON output of the AI"""
 		self.response = self.run_ai()
 
 

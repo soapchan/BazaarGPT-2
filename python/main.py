@@ -28,7 +28,7 @@ class Main:
 			openapi.response_runner()
 			openapi.output_info()
 		elif self.debug_mode:
-			openapi.get_item_data(item_name=self.item, debug_mode=True)
+			openapi.retrieve_key_data()
 
 
 	def choose_model(self):
