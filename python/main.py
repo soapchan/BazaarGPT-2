@@ -19,16 +19,28 @@ class Main:
 
 	def main(self):
 		"""The main function"""
-		openapi.choose_model(model=self.model)
+		self.choose_model()
 
 		openapi.get_item_data(item_name=self.item)
 
 		openapi.response_runner()
-		exit()
+		openapi.output_info()
+
+
+	def choose_model(self):
+		"""The model selection"""
+		models = {"3.5": "gpt-3.5-turbo-0125", "4": "gpt-4-0125-preview"}
+		for _ in models:
+			if self.model == "3.5":
+				logger.info("Model gpt-3.5-turbo-0125 selected")
+				return models["3.5"]
+			elif self.model == "4":
+				logger.info("Model gpt-4-0125-preview selected")
+				return models["4"]
 
 
 main = Main()
-openapi = OpenAPI(max_tokens=300, model=main.model, item=main.item)
+openapi = OpenAPI(max_tokens=300, model=main.choose_model(), item=main.item)
 
 
 main.main()
